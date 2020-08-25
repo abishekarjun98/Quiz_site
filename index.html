@@ -2,59 +2,100 @@
 <html>
 <head>
 	<title>Quiz Application</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 	<style>
 		
+		body
+		{
+			font-family: 'Roboto Slab', serif;
+		}
 		#q_box{
 			margin-left: 400px;
-			margin-top: 400px;
+			margin-top: 100px;
+			width: 300px;
+			border-radius: 10px;
+
 		}
 		.option_box
 		{
-			width: 100px;
+			width: auto;
 			height: auto;
 			background: #eee;
 			padding: 10px 50px;
 			border-radius: 10px;
+			margin-top: 10px;
+			font-size: 20px;
+			margin-left: 30px;
+
+			
+
 		}
 		.check_btn
 		{
 			border-style: none;
 			border-radius: 3px;
 			background-color: lightblue;
-			width: 100px;
+			width: 140px;
 			height: 30px;			
 		}
+		
 		.nav_btn
 		{
 			border-style: none;
 			border-radius: 3px;
 			background-color: lightblue;	
+			width: 70px;
+			height: 30px;
+		}
+		#status
+		{
+			width: 200px;
+			height: 200px;
+			float: left;
+			border:none;
+			margin-top: 200px;
+			margin-left: 200px;
+			
+
+		}
+		#start_btn
+		{
+			margin-top: 200px;
+			margin-left: 400px;
 		}
 	</style>
 </head>
 <body>
-<button onclick="start()" id="start_btn" class="check_btn">Start Quiz</button>
+<button onclick="start()" id="start_btn" class="check_btn" >Start Quiz</button>
+<br>
+<!--<input type="text" name="Username" id="txt_name" placeholder="Enter User name">-->
+
 
 <div id="score_display"> 
 	0
 </div>
 
+<img id="status">	
+
+
 <div id="q_box">
-	
-	<p id="q_content"></p>
+
+	<!--<button onclick="clear_opt()" class="check_btn" style="background-color: #ff0000;">Clear Selection</button>-->
+	<span id="q_num" style="font-weight:bold;font-size: 25px;"></span>&nbsp &nbsp
+	<span id="q_content" style="font-size: 25px;"></span>
 	<form class="option_box" name="opt_box"  onsubmit="return false">
 
-		1<input type="radio" name="option"  id="opt1">
- 		<label for="opt1" id="option_text_1">Sample</label><br>
+		1<input type="radio" name="option"  id="opt0">
+ 		<label for="opt0" id="option_text_1">Sample</label><br>
 
-		2<input type="radio"  name="option"  id="opt2">
-		<label for="opt2" id="option_text_2">Sample</label><br>
+		2<input type="radio"  name="option"  id="opt1">
+		<label for="opt1" id="option_text_2">Sample</label><br>
 
-		3<input type="radio" name="option"  id="opt3">
-		<label for="opt3" id="option_text_3">Sample</label><br>
+		3<input type="radio" name="option"  id="opt2">
+		<label for="opt2" id="option_text_3">Sample</label><br>
 
 		<br>
-		<button onclick="checkanswer()" class="check_btn">Submit Answer</button>
+		<button onclick="checkanswer()" class="check_btn" id="submit_btn">Submit Answer</button>
 		<!--<input class="check_btn" type="submit" name="Submit" value="Submit Answer">-->
 		 
 	</form>
