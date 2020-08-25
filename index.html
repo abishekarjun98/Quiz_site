@@ -2,9 +2,71 @@
 <html>
 <head>
 	<title>Quiz Application</title>
+	<style>
+		
+		#q_box{
+			margin-left: 400px;
+			margin-top: 400px;
+		}
+		.option_box
+		{
+			width: 100px;
+			height: auto;
+			background: #eee;
+			padding: 10px 50px;
+			border-radius: 10px;
+		}
+		.check_btn
+		{
+			border-style: none;
+			border-radius: 3px;
+			background-color: lightblue;
+			width: 100px;
+			height: 30px;			
+		}
+		.nav_btn
+		{
+			border-style: none;
+			border-radius: 3px;
+			background-color: lightblue;	
+		}
+	</style>
 </head>
 <body>
+<button onclick="start()" id="start_btn" class="check_btn">Start Quiz</button>
 
+<div id="score_display"> 
+	0
+</div>
 
+<div id="q_box">
+	
+	<p id="q_content"></p>
+	<form class="option_box" name="opt_box"  onsubmit="return false">
+
+		1<input type="radio" name="option"  id="opt1">
+ 		<label for="opt1" id="option_text_1">Sample</label><br>
+
+		2<input type="radio"  name="option"  id="opt2">
+		<label for="opt2" id="option_text_2">Sample</label><br>
+
+		3<input type="radio" name="option"  id="opt3">
+		<label for="opt3" id="option_text_3">Sample</label><br>
+
+		<br>
+		<button onclick="checkanswer()" class="check_btn">Submit Answer</button>
+		<!--<input class="check_btn" type="submit" name="Submit" value="Submit Answer">-->
+		 
+	</form>
+	<br>
+
+	<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left:40px;">Prev</button>
+	<button id="nxt_btn" class="nav_btn" onclick="next_question()" style="margin-left:40px;">Next</button>
+	
+
+</div>
+
+<script src="questions.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="functions.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
