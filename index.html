@@ -9,27 +9,29 @@
 		{
 			font-family: 'Roboto Slab', serif;
 		}
-		#q_box{
-			margin-left: 400px;
-			margin-top: 100px;
-			width: 300px;
+		
+		#meme{
+			
+			width: 400px;
 			border-radius: 10px;
-
-		}
-		.option_box
+			float: right;
+			margin-right: 100px;
+			margin-top: -260px;	
+			}
+		#q_box
 		{
-			width: auto;
+			width: 400px;
 			height: auto;
 			background: #eee;
-			padding: 10px 50px;
+			padding-left:30px;
 			border-radius: 10px;
 			margin-top: 10px;
 			font-size: 20px;
-			margin-left: 30px;
-
-			
+			margin-left: 500px;
+			margin-top: 200px;
 
 		}
+
 		.check_btn
 		{
 			border-style: none;
@@ -37,6 +39,7 @@
 			background-color: lightblue;
 			width: 140px;
 			height: 30px;			
+			margin-left: 80px;
 		}
 		
 		.nav_btn
@@ -46,6 +49,7 @@
 			background-color: lightblue;	
 			width: 70px;
 			height: 30px;
+
 		}
 		#status
 		{
@@ -54,36 +58,59 @@
 			float: left;
 			border:none;
 			margin-top: 200px;
-			margin-left: 200px;
-			
+					
 
 		}
+		#message
+		{
+			float: right;
+			margin-right:600px;
+			font-size: 30px;
+				}
 		#start_btn
 		{
-			margin-top: 200px;
-			margin-left: 400px;
+			margin-top: 300px;
+			margin-left: 600px;
+			font-size: 50px;
+			width: 200px;
+			height: 130px;
+			border-radius: 15px;
+		}
+		#start_btn:hover{
+			cursor: pointer;
+		}
+		#endgame
+		{
+			float: left;
+			margin-left: -200px;
+		}
+		#endgame:hover
+		{
+		cursor: pointer;	
 		}
 	</style>
 </head>
 <body>
+	<!--<div id="nav"></div>-->
 <button onclick="start()" id="start_btn" class="check_btn" >Start Quiz</button>
 <br>
 <!--<input type="text" name="Username" id="txt_name" placeholder="Enter User name">-->
 
 
-<div id="score_display"> 
-	0
-</div>
-
+<!--<div id="score_display"> </div>-->
+<div id="message"></div>
 <img id="status">	
 
 
+<button id="endgame"onclick="DisplayResult()" class="check_btn" style="background: red;">End game</button>
 <div id="q_box">
-
 	<!--<button onclick="clear_opt()" class="check_btn" style="background-color: #ff0000;">Clear Selection</button>-->
 	<span id="q_num" style="font-weight:bold;font-size: 25px;"></span>&nbsp &nbsp
 	<span id="q_content" style="font-size: 25px;"></span>
-	<form class="option_box" name="opt_box"  onsubmit="return false">
+
+	<br>
+	<br>
+	<form id="option_box" name="opt_box"  onsubmit="return false">
 
 		1<input type="radio" name="option"  id="opt0">
  		<label for="opt0" id="option_text_1">Sample</label><br>
@@ -97,17 +124,23 @@
 		<br>
 		<button onclick="checkanswer()" class="check_btn" id="submit_btn">Submit Answer</button>
 		<!--<input class="check_btn" type="submit" name="Submit" value="Submit Answer">-->
+		<br><br>
+		<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left: 40px;">Prev</button>
+	<button id="nxt_btn" class="nav_btn" onclick="next_question()" style="margin-left:80px;">Next</button>
 		 
 	</form>
-	<br>
+	
 
-	<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left:40px;">Prev</button>
-	<button id="nxt_btn" class="nav_btn" onclick="next_question()" style="margin-left:40px;">Next</button>
 	
 
 </div>
 
+
+
+<img id="meme">	
+
+
 <script src="questions.js" type="text/javascript" charset="utf-8" async defer></script>
-<script src="functions.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="function.js" type="text/javascript" charset="utf-8" async defer></script>
 </body>
 </html>
