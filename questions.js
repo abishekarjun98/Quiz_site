@@ -1,5 +1,3 @@
-
-
 questions=[{
 id:"1",
 question:"Where did Corona originate?",

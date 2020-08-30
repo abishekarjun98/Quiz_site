@@ -20,7 +20,7 @@ document.getElementById("status").style.display="none";
 endgame.style.display="none";
 
 
-//console.log(input_txt.value);
+
 
 var curr_qnumber;
 var score=0;
@@ -37,6 +37,19 @@ window.location.href = "startpage.html";
 }
 
 start();
+
+var finishflag=0;
+function checkend(){
+	
+if(questions_attempted==10&&finishflag==0)
+{
+
+ DisplayResult();
+ finishflag=1;
+
+}
+
+}
 
 function start()
 {
@@ -123,6 +136,7 @@ else
 
 if(questions[givenewindex(curr_qnumber)].score_alloted==1)
 {
+	
 document.getElementById("status").src="assets/correct.png";
 display_message.innerHTML="That's a correct Answer :)";
 callempty();
@@ -130,6 +144,7 @@ callempty();
 }
 else if(questions[givenewindex(curr_qnumber)].score_alloted==0)
 {
+	
 document.getElementById("status").src="assets/wrong.png";
 display_message.innerHTML=" Sorry, Wrong Answer :( ";
 callempty();
@@ -139,6 +154,8 @@ else{
 
 q_box.style.backgroundColor="#eee";
 document.getElementById("status").src="assets/empty.png";
+
+
 display_message.innerHTML="";
 //meme.style.display="none";
 callempty();
@@ -190,25 +207,30 @@ for (var i = 0; i< list.length;  i++) {
 
 			//score_board.innerHTML=score;
 			questions[givenewindex(curr_qnumber)].score_alloted=1;
+			
 			document.getElementById("status").src="assets/correct.png";
 			display_message.innerHTML="That's a correct Answer :)";
 			var btn_id_crct="btn"+curr_qnumber;
-			document.getElementById(btn_id_crct).style.backgroundColor="green";
+			document.getElementById(btn_id_crct).style.backgroundColor="#33ff33";
 			correct_sound.play();
 			callcorrect();
+			//var correct=setInterval(callcorrect,1000);
+
 			
 		}
 		else{
 			questions[givenewindex(curr_qnumber)].score_alloted=0;
+
 			document.getElementById("status").src="assets/wrong.png";
 			display_message.innerHTML=" Sorry, Wrong Answer :( ";
 			var btn_id_wrong="btn"+curr_qnumber;
-			document.getElementById(btn_id_wrong).style.backgroundColor="red";
+			document.getElementById(btn_id_wrong).style.backgroundColor="#ff3333";
 			wrong_sound.play();
 			callwrong();
 		}
 		checkflag=1;
 	}
+	
 
 }
 
@@ -273,6 +295,7 @@ function callwrong() {
 	var rand1 =Math.floor(Math.random() * 6); 
 	//option_box.style.display="none"
 	meme.src=wrongarray[rand1];
+	meme.style.display="block";
 
 }
 function callcorrect()
@@ -280,15 +303,21 @@ function callcorrect()
 	var rand2 =Math.floor(Math.random() * 6); 
 	//option_box.style.display="none"
 	meme.src=correctarray[rand2];
+	meme.style.display="block";
 
 }
 function callempty()
 {
-meme.src="assets/empty.png";
+//meme.src="assets/empty.png";
+meme.style.display="none";
 }
 
 function DisplayResult()
 {
+
+var win_ratio;
+win_ratio=score/(60-timepassed);
+
 
 var User_name = localStorage.getItem("U_name");
 alert("User_name:"+User_name+"\n"+"Total Correct Answers:"+score+"\n"+"Total Attended questions:"+ questions_attempted);
@@ -296,7 +325,9 @@ alert("User_name:"+User_name+"\n"+"Total Correct Answers:"+score+"\n"+"Total Att
 
 const score_obj = {
     u_name:User_name ,
-    Score:score
+    Score:score,
+    Time:60-timepassed,
+    Ratio:(win_ratio).toFixed(3)
   
   };
 
@@ -307,9 +338,9 @@ const score_obj = {
   highScores.splice(10);
 	 localStorage.setItem("highScores", JSON.stringify(highScores));
 
+clearscreen();
 
-
-//clearscreen();
+clearInterval(timer);
 }
 
 
@@ -364,9 +395,11 @@ function begintimer()
   document.getElementById("timer").innerHTML=timepassed;
   if(timepassed>0)
   {
-  //timepassed--;
-  //time_sound.play();
+  timepassed--;
+  time_sound.play();
+  checkend();
 }
+
 else
 {
 	 clearInterval(timer);

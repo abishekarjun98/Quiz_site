@@ -6,14 +6,15 @@
 <style>
 	#table
 	{
-		background: lightcyan;
-		width: 300px;
-		height: auto;
-		margin-left: 500px;
+		
+		width: 700px;
+		height: 500px;
+		margin-left: 450px;
 		margin-top: 50px;
+		border-style: solid;
 	}
 
-	.People_class{
+	.list_class{
   border: 1px solid #ddd;
   margin-top: -1px; 
   background-color: #f6f6f6;
@@ -23,36 +24,33 @@
   display: block;
   margin-top: 10px;
   border-radius: 6px;
-  height:50px;
+  height:30px;
+  float: left;
 }
-.score_class
+.other_class
 {
-	float: right;
+margin-left: 50px;
 }
+.check_btn
+		{
+			border-style: none;
+			border-radius: 3px;
+			background-color: lightblue;
+			width: 140px;
+			height: 30px;	
+			margin-left: 100px;		
+			
+		}
 </style>
 </head>
 <body>
+	<a href="startpage.html"><button id="backbtn" class="check_btn" style="background: lightblue;">Back to Home</button>
+</a>
 	<h1 style="font-family: 'Roboto Slab', serif; margin-left: 550px;">
-		High Score
+		Score Board
 	</h1>
 <div id="table">	
 </div>
-<!--
-<table>
-	
-	<thead>
-		<tr>
-			<th>UserName</th>
-			<th>Score</th>
-
-		</tr>
-	</thead>
-	<tbody>
-		<tr id="data">
-			
-		</tr>
-	</tbody>
-</table>-->
 
 <script>
 
@@ -64,18 +62,28 @@ var scores_array= JSON.parse(localStorage.getItem("highScores"));
 for (var i = 0; i < scores_array.length; i++) {
 		
 	var row_node=document.createElement("LI");
-	row_node.setAttribute("class","People_class");
+	row_node.setAttribute("class","list_class");
 	var name_node = document.createTextNode(scores_array[i].u_name+" ");  
 
 	var score_node = document.createElement("span");
 	score_node.innerText = scores_array[i].Score+" ";
-	score_node.setAttribute('class', 'score_class');
+	score_node.setAttribute('class', 'other_class');
     
+    var time_node = document.createElement("span");
+	time_node.innerText = scores_array[i].Time+" ";
+	time_node.setAttribute('class', 'other_class');
+
+	var ratio_node = document.createElement("span");
+	ratio_node.innerText = scores_array[i].Ratio+" ";
+	ratio_node.setAttribute('class', 'other_class');
 
 
 
-    	row_node.appendChild(name_node);
+		
+		row_node.appendChild(name_node);
+		row_node.appendChild(time_node);
         row_node.appendChild(score_node);
+        row_node.appendChild(ratio_node);
 
         var brk=document.createElement("BR");
         row_node.appendChild(brk);

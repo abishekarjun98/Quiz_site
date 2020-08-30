@@ -2,35 +2,66 @@
 <html>
 <head>
 	<title></title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
 	<style>
+
+body
+		{
+			font-family: 'Roboto Slab', serif;
+		}
 	#start_btn
 		{
-			margin-top: 300px;
+			margin-top: 30px;
 			margin-left: 600px;
-			font-size: 50px;
+			font-size: 30px;
 			width: 200px;
-			height: 130px;
-			border-radius: 15px;
+			height: 100px;
+			border-radius: 8px;
+			font-family: 'Roboto Slab', serif;
+			border-style: none;
+			background-color: lightblue;
 		}
 		#start_btn:hover{
 			cursor: pointer;
+			transform: scale(1.1);
 		}
-		.check_btn
+		
+		#txt_name
 		{
-			border-style: none;
+			margin-top: 30px;
+			margin-left: 600px;
+			height: 30px;
+			width: 200px;
+			border-radius: 5px;
+			border-style: solid;
+		}
+		#score_btn
+		{
+			width: 100px;
+			height: 50px;
+			margin-left: 650px;
+			margin-top: 50px;
 			border-radius: 3px;
-			background-color: lightblue;
-			width: 140px;
-			height: 30px;			
-			margin-left: 80px;
-		}	
+			font-family: 'Roboto Slab', serif;
+			border-style: none;
+			background-color: yellow;
+
+		}
+		#score_btn:hover{
+			cursor: pointer;
+			transform: scale(1.1);
+		}
 	</style>
 </head>
 <body>
 
-<a href="index.html"><button  id="start_btn" class="check_btn" onclick="save_user()" >Start Quiz</button></a>
-<input type="text" name="Username" id="txt_name" placeholder="Enter User name">
-<!--<script src="function.js" type="text/javascript" charset="utf-8" async defer></script>-->
+<h1 style="margin-top: 250px;margin-left: 570px;">The CORONA QUIZ!!!</h1>
+<input type="text" name="Username" id="txt_name" placeholder="Enter Your Name">
+<br>
+<a href="index.html"><button  id="start_btn" onclick="save_user()" >Start Quiz</button></a>
+
+<br>
+<a href="score.html"><button id="score_btn">Score Board</button>
 
 <script  type="text/javascript" charset="utf-8" async defer>
 	
