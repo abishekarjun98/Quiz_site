@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scores</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
+<style>
+	#table
+	{
+		background: lightcyan;
+		width: 300px;
+		height: auto;
+		margin-left: 500px;
+		margin-top: 50px;
+	}
+
+	.People_class{
+  border: 1px solid #ddd;
+  margin-top: -1px; 
+  background-color: #f6f6f6;
+  padding: 12px;
+  font-size: 35px;
+  color: black;
+  display: block;
+  margin-top: 10px;
+  border-radius: 6px;
+  height:50px;
+}
+.score_class
+{
+	float: right;
+}
+</style>
+</head>
+<body>
+	<h1 style="font-family: 'Roboto Slab', serif; margin-left: 550px;">
+		High Score
+	</h1>
+<div id="table">	
+</div>
+<!--
+<table>
+	
+	<thead>
+		<tr>
+			<th>UserName</th>
+			<th>Score</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		<tr id="data">
+			
+		</tr>
+	</tbody>
+</table>-->
+
+<script>
+
+var table_score =document.getElementById('table');
+var scores_array= JSON.parse(localStorage.getItem("highScores"));
+
+
+
+for (var i = 0; i < scores_array.length; i++) {
+		
+	var row_node=document.createElement("LI");
+	row_node.setAttribute("class","People_class");
+	var name_node = document.createTextNode(scores_array[i].u_name+" ");  
+
+	var score_node = document.createElement("span");
+	score_node.innerText = scores_array[i].Score+" ";
+	score_node.setAttribute('class', 'score_class');
+    
+
+
+
+    	row_node.appendChild(name_node);
+        row_node.appendChild(score_node);
+
+        var brk=document.createElement("BR");
+        row_node.appendChild(brk);
+
+table_score.appendChild(row_node);
+	//table.innerHTML+=scores_array[i].u_name;
+	//table.innerHTML+=scores_array[i].Score;
+	}	
+	
+</script>
+</body>
+</html>

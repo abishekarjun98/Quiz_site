@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	#start_btn
+		{
+			margin-top: 300px;
+			margin-left: 600px;
+			font-size: 50px;
+			width: 200px;
+			height: 130px;
+			border-radius: 15px;
+		}
+		#start_btn:hover{
+			cursor: pointer;
+		}
+		.check_btn
+		{
+			border-style: none;
+			border-radius: 3px;
+			background-color: lightblue;
+			width: 140px;
+			height: 30px;			
+			margin-left: 80px;
+		}	
+	</style>
+</head>
+<body>
+
+<a href="index.html"><button  id="start_btn" class="check_btn" onclick="save_user()" >Start Quiz</button></a>
+<input type="text" name="Username" id="txt_name" placeholder="Enter User name">
+<!--<script src="function.js" type="text/javascript" charset="utf-8" async defer></script>-->
+
+<script  type="text/javascript" charset="utf-8" async defer>
+	
+
+	function save_user()
+	{
+	var input_txt=document.getElementById("txt_name");
+	console.log(input_txt.value);
+	localStorage.setItem("U_name", input_txt.value);
+}
+</script>
+</body>
+</html>
