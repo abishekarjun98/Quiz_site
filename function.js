@@ -18,6 +18,8 @@ q_box.style.display="none";
 
 document.getElementById("status").style.display="none";
 endgame.style.display="none";
+meme.style.display="none";
+
 
 
 var curr_qnumber;
@@ -31,6 +33,8 @@ document.getElementById("status").style.display="none";
 start_btn.style.display="block";
 meme.style.display="none";
 endgame.style.display="none";
+display_message.style.display="none";
+window.location.reload();
 }
 
 function start()
@@ -113,6 +117,7 @@ else
 if(questions[curr_qnumber].score_alloted==1)
 {
 document.getElementById("status").src="assets/correct.png";
+display_message.style.display="block";
 display_message.innerHTML="That's a correct Answer :)";
 callempty();
 
@@ -120,6 +125,7 @@ callempty();
 else if(questions[curr_qnumber].score_alloted==0)
 {
 document.getElementById("status").src="assets/wrong.png";
+
 display_message.innerHTML=" Sorry, Wrong Answer :( ";
 callempty();
 
@@ -213,52 +219,25 @@ var option_elements = document.getElementsByName("option");
 
 }
 
-//creatnav();
-//showquestion(1);
 
-function creatnav()
-{
-for(var i = 0; i <=2 ; i++)
- {    
-                  let btn =document.createElement("button");
-                      //btn.classList.add("abcd");
-                      var t = document.createTextNode(i);
-
-             		      btn.style.background="light blue";
-                       btn.appendChild(t);
-                       //btn.onclick=showquestion(i);
-
-                       var abc= document.getElementById('nav');
-                       abc.appendChild(btn);
-
-                      
-/*
-btn.onclick=function change()
- {
-
-
- }
- */
-}
-}
 
 function callwrong() {
 	
 	var rand1 =Math.floor(Math.random() * 5); 
-	//option_box.style.display="none"
+	meme.style.display="block";
 	meme.src=wrongarray[rand1];
 
 }
 function callcorrect()
 {
 	var rand2 =Math.floor(Math.random() * 5); 
-	//option_box.style.display="none"
+	meme.style.display="block";
 	meme.src=correctarray[rand2];
 
 }
 function callempty()
 {
-meme.src="assets/empty.png";
+	meme.style.display="none";
 }
 
 function DisplayResult()

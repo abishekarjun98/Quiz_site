@@ -10,13 +10,16 @@
 			font-family: 'Roboto Slab', serif;
 		}
 		
-		#meme{
-			
-			width: 400px;
-			border-radius: 10px;
-			float: right;
-			margin-right: 100px;
-			margin-top: -260px;	
+		#meme
+{
+height: 350px;
+width: 430px;
+position: relative;
+float: left;
+z-index:99999;
+left:500px;
+top:-400px;
+border-radius: 6px;
 			}
 		#q_box
 		{
@@ -39,7 +42,7 @@
 			background-color: lightblue;
 			width: 140px;
 			height: 30px;			
-			margin-left: 80px;
+			margin-left: 120px;
 		}
 		
 		.nav_btn
@@ -125,7 +128,7 @@
 		<button onclick="checkanswer()" class="check_btn" id="submit_btn">Submit Answer</button>
 		<!--<input class="check_btn" type="submit" name="Submit" value="Submit Answer">-->
 		<br><br>
-		<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left: 40px;">Prev</button>
+		<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left: 80px;">Prev</button>
 	<button id="nxt_btn" class="nav_btn" onclick="next_question()" style="margin-left:80px;">Next</button>
 		 
 	</form>
