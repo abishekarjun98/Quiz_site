@@ -3,155 +3,24 @@
 <head>
 	<title>Quiz Application</title>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap" rel="stylesheet">
-	<style>
-		
-		body
-		{
-			font-family: 'Roboto Slab', serif;
-		}
-		#nav
-		{
-			width: 85px;
-			float: left;
-			margin-top: 150px;
-			margin-left: 50px;
-		}
-		.navbar
-		{
-			width: 30px;
-			height: 30px;
-			border-radius: 3px;
-			border-style: none;
-			margin: 2px;
-
-		}
-		.navbar:hover
-		{
-			cursor: pointer;
-
-		}
-		
-#meme
-{
-height: 350px;
-width: 450px;
-position: relative;
-float: left;
-z-index:99999;
-left:-580px;
-top:60px;
-border-radius: 6px;
-			}
-		#q_box
-		{
-			width: 400px;
-			height: 300px;
-			background: #eee;
-			padding-left:30px;
-			border-radius: 10px;
-			font-size: 20px;
-			float: left;
-			margin-left: 180px;
-			margin-top: 120px;
-		}
-
-		.check_btn
-		{
-			border-style: none;
-			border-radius: 3px;
-			background-color: lightblue;
-			width: 140px;
-			height: 30px;			
-			
-		}
-		
-		.nav_btn
-		{
-			border-style: none;
-			border-radius: 3px;
-			background-color: lightblue;	
-			width: 70px;
-			height: 30px;
-
-		}
-		#status
-		{
-			width: 200px;
-			height: 200px;
-			float: left;
-			border:none;
-			margin-top: 250px;
-			margin-left: 50px;			
-		}
-		#message
-		{
-			float: right;
-			margin-right:700px;
-			font-size: 30px;
-				}
-		#start_btn
-		{
-			margin-top: 300px;
-			margin-left: 600px;
-			font-size: 50px;
-			width: 200px;
-			height: 130px;
-			border-radius: 15px;
-		}
-		#start_btn:hover{
-			cursor: pointer;
-		}
-		#endgame
-		{
-			float: left;
-			margin-top: 520px;
-			margin-left: -440px;
-
-		}
-		#endgame:hover
-		{
-		cursor: pointer;	
-		}
-		#timer
-		{
-			float: left;
-			font-size: 50px;
-			margin-left: -200px;
-		}
-		#btn_grp
-		{
-			float: left;
-			margin-top: 450px;
-			margin-left: -420px;
- 
-		}
-	</style>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-
-<br>
-
-
 
 <div id="User_Display"> </div>
 <div id="message"></div>
 <img id="status">	
 
-
-
-<!--<a href="score.html"><button id="scorebtn" class="check_btn" style="background: yellow; margin-left:-40px;">LeaderBoard</button>
-</a>-->
 <br>
 
-<div id="timer">
-</div>
-<h3 style="margin-left: -130px;float: left;">Seconds Left</h3>
-<div id="q_box">
-	<!--<button onclick="clear_opt()" class="check_btn" style="background-color: #ff0000;">Clear Selection</button>-->
-	<span id="q_num" style="font-weight:bold;font-size: 25px;"></span>&nbsp &nbsp
-	<span id="q_content" style="font-size: 25px;"></span>
+<div id="timer"></div>
 
+<h3>Seconds Left</h3>
+
+<div id="q_box">
+	
+	<span id="q_num"></span>&nbsp &nbsp
+	<span id="q_content"></span>
 	<br>
 	<br>
 	<form id="option_box" name="opt_box"  onsubmit="return false">
@@ -165,29 +34,23 @@ border-radius: 6px;
 		3<input type="radio" name="option"  id="opt2">
 		<label for="opt2" id="option_text_3">Sample</label><br>
 </form>
-	</div>
+</div>
 		<br><br>
-		<div id="btn_grp">
-		
+	<div id="btn_grp">
 		<button id="prev_btn" class="nav_btn" onclick="prev_question()" style="margin-left: 40px;">Prev</button>
 		<button onclick="checkanswer()" class="check_btn" id="submit_btn">Submit Answer</button>
-	<button id="nxt_btn" class="nav_btn" onclick="next_question()">Next</button>
-		 
-		 </div>
-		 	<div id="nav"></div>
+		<button id="nxt_btn" class="nav_btn" onclick="next_question()">Next</button>
+    </div>
+			 
 	
-
-	
+<div id="nav"></div>	
 <button id="endgame"onclick="DisplayResult()" class="check_btn" style="background: red;">End game</button>
-
-
-
-
 
 <img id="meme">	
 
 
 <script src="questions.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="function.js" type="text/javascript" charset="utf-8" async defer></script>
+
 </body>
 </html>

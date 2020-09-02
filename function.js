@@ -14,11 +14,12 @@ var option_box =document.getElementById("option_box");
 var endgame=document.getElementById("endgame");
 var input_txt=document.getElementById("txt_name");
 
-q_box.style.display="none";
 
+/*
+q_box.style.display="none";
 document.getElementById("status").style.display="none";
 endgame.style.display="none";
-
+*/
 
 
 
@@ -39,7 +40,7 @@ window.location.href = "startpage.html";
 start();
 
 var finishflag=0;
-function checkend(){
+function checkend(){ //to end the game upon attending 10 questions
 	
 if(questions_attempted==10&&finishflag==0)
 {
@@ -57,7 +58,7 @@ function start()
 while(random_questions.length<10)
  {		
 
-createrand();
+createrand();//creates a array of integers from 0-10 in random order
 
 }
 curr_qnumber=0;
@@ -77,29 +78,25 @@ q_box.style.display="block";
 
 	//option_box.style.display="block";
 
-
-
-
 var q_content=document.getElementById('q_content');
 
-q_content.innerHTML=questions[givenewindex(q_number)].question;
-q_num.innerHTML= q_number+1;
-for (var i =1; i <=3; i++) {
+q_content.innerHTML=questions[givenewindex(q_number)].question; // displaying question
+q_num.innerHTML= q_number+1; 	//question index
 
-var label_index='option_text_'+i;
+for (var i =1; i <=3; i++) //loop to display options to corresponding questions
+{
 
-var opt=document.getElementById(label_index);
-
-option_index="opt_"+i;
-
-opt.innerHTML=questions[givenewindex(q_number)][option_index];
+	var label_index='option_text_'+i;
+	var opt=document.getElementById(label_index);
+	option_index="opt_"+i;
+	opt.innerHTML=questions[givenewindex(q_number)][option_index];
 
 }
 
 var prev=document.getElementById("prev_btn");
-
 var nxt=document.getElementById("nxt_btn");
-if(q_number==0)
+
+if(q_number==0) 
 {
 	prev.disabled=true;
 }
@@ -107,6 +104,7 @@ else
 {
 	prev.disabled=false;
 }
+
 if(q_number==9)
 {
 	nxt.disabled=true;
@@ -116,16 +114,13 @@ else
 	nxt.disabled=false;
 }
 
-if(questions[givenewindex(curr_qnumber)].opt_checked!=4)
+if(questions[givenewindex(curr_qnumber)].opt_checked!=4)// if a question is answered submitting is disabled
 {
 
-var list =document.opt_box.option;
-
-var option_chosen = questions[givenewindex(curr_qnumber)].opt_checked;
-
-list[option_chosen].checked=true;
-
-submit_btn.disabled=true;
+	var list =document.opt_box.option;
+	var option_chosen = questions[givenewindex(curr_qnumber)].opt_checked;
+	list[option_chosen].checked=true;
+	submit_btn.disabled=true;
 }
 
 else
@@ -137,39 +132,33 @@ else
 if(questions[givenewindex(curr_qnumber)].score_alloted==1)
 {
 	
-document.getElementById("status").src="assets/correct.png";
-display_message.innerHTML="That's a correct Answer :)";
-callempty();
+	document.getElementById("status").src="assets/correct.png";	
+	display_message.innerHTML="That's a correct Answer :)";
+	callempty();
 
 }
+
 else if(questions[givenewindex(curr_qnumber)].score_alloted==0)
 {
 	
-document.getElementById("status").src="assets/wrong.png";
-display_message.innerHTML=" Sorry, Wrong Answer :( ";
-callempty();
+	document.getElementById("status").src="assets/wrong.png";
+	display_message.innerHTML=" Sorry, Wrong Answer :( ";
+	callempty();
 
 }
+
 else{
 
-q_box.style.backgroundColor="#eee";
-document.getElementById("status").src="assets/empty.png";
+	q_box.style.backgroundColor="#eee";
+	document.getElementById("status").src="assets/empty.png";
+	display_message.innerHTML="";
+	//meme.style.display="none";	
+	callempty();
+	//console.log("calllef");
+	}
 
-
-display_message.innerHTML="";
-//meme.style.display="none";
-callempty();
-//console.log("calllef");
-
-
-
-}
-
-//console.log(questions[curr_qnumber].score_alloted+"alloted");
-
-
-
-}
+//console.log(questions[curr_qnumber].score_alloted+"alloted");	
+	}
 
 function next_question()
 {
@@ -177,7 +166,7 @@ function next_question()
 	showquestion(curr_qnumber);
 }
 
-function prev_question()
+function prev_question() 
 {
 	curr_qnumber--;
 	showquestion(curr_qnumber);
@@ -185,42 +174,36 @@ function prev_question()
 
 
 
-var questions_attempted=0;
-function checkanswer()
+var questions_attempted=0; 
+
+function checkanswer() //evaluating the answer
 {
 	
 var list =document.opt_box.option;
 
-var checkflag=0;
+var checkflag=0; // to check whether submission is done by selecting options
 
 for (var i = 0; i< list.length;  i++) {
+
 	if(list[i].checked)
 	{
 		questions_attempted++;
 		var checked_option=i;
 		questions[givenewindex(curr_qnumber)].opt_checked=checked_option;
 		if(checked_option==questions[givenewindex(curr_qnumber)]["correct"])
-		{
-			//if(questions[curr_qnumber].score_alloted==2)
-			
+		{	
 			score++;
-
-			//score_board.innerHTML=score;
-			questions[givenewindex(curr_qnumber)].score_alloted=1;
-			
-			document.getElementById("status").src="assets/correct.png";
+			questions[givenewindex(curr_qnumber)].score_alloted=1; // setting the flag for allocation of score
+			document.getElementById("status").src="assets/correct.png";// showing thumbs up
 			display_message.innerHTML="That's a correct Answer :)";
 			var btn_id_crct="btn"+curr_qnumber;
-			document.getElementById(btn_id_crct).style.backgroundColor="#33ff33";
+			document.getElementById(btn_id_crct).style.backgroundColor="#33ff33"; // changing the state of button in nav
 			correct_sound.play();
-			callcorrect();
-			//var correct=setInterval(callcorrect,1000);
-
-			
+			callcorrect(); //to display meme
 		}
+
 		else{
 			questions[givenewindex(curr_qnumber)].score_alloted=0;
-
 			document.getElementById("status").src="assets/wrong.png";
 			display_message.innerHTML=" Sorry, Wrong Answer :( ";
 			var btn_id_wrong="btn"+curr_qnumber;
@@ -240,7 +223,7 @@ if(checkflag==0)
 }
 }
 
-function clear_opt()
+function clear_opt() //to remove the options which were selected in previous questions
 {
 
 var option_elements = document.getElementsByName("option");
@@ -253,62 +236,51 @@ var option_elements = document.getElementsByName("option");
 }
 
 creatnav();
-//showquestion(1);
-function change(value)
+
+function change(value) //displaying question based on the btn in nav clicked
  {
 
-curr_qnumber=value;
-showquestion(curr_qnumber);
+	curr_qnumber=value;
+	showquestion(curr_qnumber);
+	var str= "btn"+value;
+}
 
-var str= "btn"+value;
-
-//document.getElementById(str).style.font-weight="bold";
-
-
- }
-
-function creatnav()
+function creatnav() // creating elements in navbar
 {
 for(var i = 0; i <=9 ; i++)
  {    
-                  let btn =document.createElement("button");
-                
-                		var j;
-                       j= i+1;
-                      var t = document.createTextNode(j);
-                      	btn.setAttribute("class","navbar");
-                      	btn.setAttribute("ID","btn"+i);
-                       btn.appendChild(t);
-                       
-                       btn.setAttribute("onclick","change("+i+")");
-
-                       var abc= document.getElementById('nav');
-                       abc.appendChild(btn);
-
-                      
+        let btn =document.createElement("button");
+        var j;
+        j= i+1;
+        var t = document.createTextNode(j);
+        btn.setAttribute("class","navbar");
+        btn.setAttribute("ID","btn"+i);
+        btn.appendChild(t);
+        btn.setAttribute("onclick","change("+i+")");
+    	var btnbar= document.getElementById('nav');
+        btnbar.appendChild(btn);                     
  
 }
 }
 
 function callwrong() {
 	
-	var rand1 =Math.floor(Math.random() * 6); 
-	//option_box.style.display="none"
+	var rand1 =Math.floor(Math.random() * 6); //choosing a random meme to display
 	meme.src=wrongarray[rand1];
 	meme.style.display="block";
 
 }
+
 function callcorrect()
 {
 	var rand2 =Math.floor(Math.random() * 6); 
-	//option_box.style.display="none"
 	meme.src=correctarray[rand2];
 	meme.style.display="block";
 
 }
-function callempty()
+
+function callempty() //for unaswered question
 {
-//meme.src="assets/empty.png";
 meme.style.display="none";
 }
 
@@ -317,9 +289,9 @@ function DisplayResult()
 
 var win_ratio;
 win_ratio=score/(60-timepassed);
+var User_name = localStorage.getItem("U_name"); //getting the name user entered
 
 
-var User_name = localStorage.getItem("U_name");
 alert("User_name:"+User_name+"\n"+"Total Correct Answers:"+score+"\n"+"Total Attended questions:"+ questions_attempted);
 
 
@@ -331,23 +303,21 @@ const score_obj = {
   
   };
 
-    const highScores = JSON.parse(localStorage.getItem("highScores")) || [];	
-  highScores.push(score_obj);
-
+  const highScores = JSON.parse(localStorage.getItem("highScores")) || [];	//getting an array which is present alreasy or intializing a new array
+  highScores.push(score_obj); //adding the current score to the array
   highScores.sort((a,b)=> b.Score - a.Score);
-  highScores.splice(10);
-	 localStorage.setItem("highScores", JSON.stringify(highScores));
+  highScores.splice(10); 
+  localStorage.setItem("highScores", JSON.stringify(highScores));
 
-clearscreen();
+clearscreen(); //redirecting to home 
+clearInterval(timer); //stopping the countdown
 
-clearInterval(timer);
 }
 
 
-//for (var j = 0; j < 10; j++)
  
 var presenceflag;
-function createrand()
+function createrand() //creating length 10 array with numbers in random order
 {
 
 console.log("called");
@@ -382,7 +352,7 @@ console.log("called");
 
 	
 
-function givenewindex(num)
+function givenewindex(num) //returning the index of question with respect to new random declaration
 {
 
 	return random_questions[num];
@@ -395,18 +365,18 @@ function begintimer()
   document.getElementById("timer").innerHTML=timepassed;
   if(timepassed>0)
   {
-  timepassed--;
-  time_sound.play();
-  checkend();
-}
+  	timepassed--;
+  	time_sound.play();
+  	checkend();
+  }
 
 else
-{
+  {
 	 clearInterval(timer);
-	 //end_sound.play();
-	 //DisplayResult();
+	 end_sound.play();
+	 DisplayResult();
 
-}
+  }
                 
 }
 var timer= setInterval(begintimer,1000);

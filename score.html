@@ -7,14 +7,15 @@
 	#table
 	{
 		
-		width: 700px;
+		width: 800px;
 		height: 500px;
 		margin-left: 450px;
 		margin-top: 50px;
 		border-style: solid;
 	}
 
-	.list_class{
+.list_class
+{
   border: 1px solid #ddd;
   margin-top: -1px; 
   background-color: #f6f6f6;
@@ -29,7 +30,7 @@
 }
 .other_class
 {
-margin-left: 50px;
+	margin-left: 50px;
 }
 .check_btn
 		{
@@ -41,12 +42,17 @@ margin-left: 50px;
 			margin-left: 100px;		
 			
 		}
+		h1{
+
+			font-family: 'Roboto Slab', serif;
+			 margin-left: 690px;
+		}
 </style>
 </head>
 <body>
 	<a href="startpage.html"><button id="backbtn" class="check_btn" style="background: lightblue;">Back to Home</button>
 </a>
-	<h1 style="font-family: 'Roboto Slab', serif; margin-left: 550px;">
+	<h1>
 		Score Board
 	</h1>
 <div id="table">	
@@ -59,7 +65,8 @@ var scores_array= JSON.parse(localStorage.getItem("highScores"));
 
 
 
-for (var i = 0; i < scores_array.length; i++) {
+for (var i = 0; i < scores_array.length; i++)
+ {
 		
 	var row_node=document.createElement("LI");
 	row_node.setAttribute("class","list_class");
@@ -80,7 +87,7 @@ for (var i = 0; i < scores_array.length; i++) {
 
 
 		
-		row_node.appendChild(name_node);
+		row_node.appendChild(name_node);//adding all the data obtained from an user's attempt is displayed
 		row_node.appendChild(time_node);
         row_node.appendChild(score_node);
         row_node.appendChild(ratio_node);
@@ -89,9 +96,8 @@ for (var i = 0; i < scores_array.length; i++) {
         row_node.appendChild(brk);
 
 table_score.appendChild(row_node);
-	//table.innerHTML+=scores_array[i].u_name;
-	//table.innerHTML+=scores_array[i].Score;
-	}	
+	
+}	
 	
 </script>
 </body>

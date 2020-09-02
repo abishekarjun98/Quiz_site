@@ -51,11 +51,16 @@ body
 			cursor: pointer;
 			transform: scale(1.1);
 		}
+		h1{
+			margin-top: 250px;
+			margin-left: 570px;
+		}
 	</style>
 </head>
 <body>
 
-<h1 style="margin-top: 250px;margin-left: 570px;">The CORONA QUIZ!!!</h1>
+<h1>The CORONA QUIZ!!!</h1>
+
 <input type="text" name="Username" id="txt_name" placeholder="Enter Your Name">
 <br>
 <a href="index.html"><button  id="start_btn" onclick="save_user()" >Start Quiz</button></a>
@@ -71,7 +76,7 @@ body
 	var input_txt=document.getElementById("txt_name");
 	console.log(input_txt.value);
 	localStorage.setItem("U_name", input_txt.value);
-}
+	}
 </script>
 </body>
 </html>
